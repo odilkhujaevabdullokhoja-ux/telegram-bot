@@ -1,4 +1,4 @@
-C
+
 
 async def order_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("📝 Шаг 1/4: Введите ваше имя:")
@@ -69,6 +69,5 @@ def main():
     app.add_handler(conv)
     print("🤖 Бот запущен!")
     app.run_polling()
-
-git commit -m "fix token" 
+ 
 
