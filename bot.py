@@ -1,4 +1,20 @@
+import os
+from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove
+from telegram.ext import (
+    Application, CommandHandler, MessageHandler,
+    ConversationHandler, filters, ContextTypes,
+)
 
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+ADMIN_CHAT_ID = int(os.getenv("ADMIN_CHAT_ID"))
+
+NAME, PHONE, PRODUCT, QUANTITY, CONFIRM = range(5)
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_photo(
+        photo="AgACAgIAAxkBAAMgahvcXjbnJZOsqbOXcA1cxfb42YsAAn0Xaxsk3eBIVZH37JzSFrYBAAMCAAN5AAM7BA",
+        caption="👋 Привет! Это наш товар — Loro Piana 👜\nЦена: 230.000 сум\n\nНапиши /order чтобы сделать заказ!"
+    )
 
 async def order_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("📝 Шаг 1/4: Введите ваше имя:")
@@ -69,5 +85,6 @@ def main():
     app.add_handler(conv)
     print("🤖 Бот запущен!")
     app.run_polling()
- 
 
+if __name__ == "__main__":
+    main()
