@@ -1,16 +1,4 @@
-from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove
-from telegram.ext import (
-    Application, CommandHandler, MessageHandler,
-    ConversationHandler, filters, ContextTypes,
-)
-
-BOT_TOKEN = "8858083030:AAF-3mthMQsjqdo2jbY8SBY0D7LVtnoOc4w"
-ADMIN_CHAT_ID = 7839941506
-
-NAME, PHONE, PRODUCT, QUANTITY, CONFIRM = range(5)
-
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_photo(photo="AgACAgIAAxkBAAMgahvcXjbnJZOsqbOXcA1cxfb42YsAAn0Xaxsk3eBIVZH37JzSFrYBAAMCAAN5AAM7BA", caption="👋 Привет! Это наш товар — Loro Piana 👜\nЦена: 230.000 сум\n\nНапиши /order чтобы сделать заказ!")
+C
 
 async def order_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("📝 Шаг 1/4: Введите ваше имя:")
@@ -82,5 +70,5 @@ def main():
     print("🤖 Бот запущен!")
     app.run_polling()
 
-if __name__ == "__main__":
-    main()
+git commit -m "fix token" 
+
