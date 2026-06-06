@@ -63,8 +63,7 @@ async def confirm_order(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("❌ Отменено.", reply_markup=ReplyKeyboardRemove())
     context.user_data.clear()
     return ConversationHandler.END
-
-def get_photo_id(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def get_photo_id(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.message.photo:
         file_id = update.message.photo[-1].file_id
         await context.bot.send_message(chat_id=ADMIN_CHAT_ID, text=f"📸 file_id: {file_id}")
