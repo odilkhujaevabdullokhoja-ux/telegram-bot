@@ -12,7 +12,7 @@ NAME, PHONE, PRODUCT, QUANTITY, CONFIRM = range(5)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_photo(
-        photo="AgACAgIAAxkBAAMgahvcXjbnJZOsqbOXcA1cxfb42YsAAn0Xaxsk3eBIVZH37JzSFrYBAAMCAAN5AAM7BA",
+        photo="AgACAgIAAxkBAAODaiP4ZZseLf6fkx4FnJ-bL53UjGAAAqUaaxtAkyFJMiQmeVNuLSYBAAMCAAN5AAM7BA",
         caption="👋 Привет! Это наш товар — Loro Piana 👜\nЦена: 230.000 сум\n\nНапиши /order чтобы сделать заказ!"
     )
 
