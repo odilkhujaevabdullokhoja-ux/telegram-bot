@@ -64,6 +64,12 @@ async def confirm_order(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data.clear()
     return ConversationHandler.END
 
+def get_photo_id(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if update.message.photo:
+        file_id = update.message.photo[-1].file_id
+        await context.bot.send_message(chat_id=ADMIN_CHAT_ID, text=f"📸 file_id: {file_id}")
+        await update.message.reply_text("✅ Готово!")
+
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("❌ Отменено.", reply_markup=ReplyKeyboardRemove())
     return ConversationHandler.END
@@ -82,6 +88,7 @@ def main():
         fallbacks=[CommandHandler("cancel", cancel)],
     )
     app.add_handler(CommandHandler("start", start))
+    app.add_handler(MessageHandler(filters.PHOTO, get_photo_id))
     app.add_handler(conv)
     print("🤖 Бот запущен!")
     app.run_polling()
