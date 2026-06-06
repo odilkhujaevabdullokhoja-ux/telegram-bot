@@ -11,11 +11,12 @@ ADMIN_CHAT_ID = int(os.getenv("ADMIN_CHAT_ID"))
 NAME, PHONE, PRODUCT, QUANTITY, CONFIRM = range(5)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_photo(
-        photo="AgACAgIAAxkBAAODaiP4ZZseLf6fkx4FnJ-bL53UjGAAAqUaaxtAkyFJMiQmeVNuLSYBAAMCAAN5AAM7BA",
-        caption="👋 Привет! Это наш товар — Loro Piana 👜\nЦена: 230.000 сум\n\nНапиши /order чтобы сделать заказ!"
-    )
-
+    from telegram import InputMediaPhoto
+    await update.message.reply_media_group(media=[
+        InputMediaPhoto(media="AgACAgIAAxkBAAMgahvcXjbnJZOsqbOXcA1cxfb42YsAAn0Xaxsk3eBIVZH37JzSFrYBAAMCAAN5AAM7BA"),
+        InputMediaPhoto(media="AgACAgIAAxkBAAODaiP4ZZseLf6fkx4FnJ-bL53UjGAAAqUaaxtAkyFJMiQmeVNuLSYBAAMCAAN5AAM7BA", caption="👜 Loro Piana\n💰 Цена: 270.000 сум\n\nНапиши /order чтобы сделать заказ!"),
+    ])
+      
 async def order_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("📝 Шаг 1/4: Введите ваше имя:")
     return NAME
